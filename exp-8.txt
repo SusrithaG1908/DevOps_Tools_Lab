@@ -1,0 +1,26 @@
+docker --version
+kubectcl version --client
+minikube version
+
+minikube start --driver=docker
+
+docker build -t mywebapp .
+
+minikube image load mywebapp
+
+kubectl create deployment <deployment_name> --image=mywebapp --replicas=2
+
+kubectl get pods
+
+kubectl expose deployment <deployment_name> --type=NodePort --port=8000
+
+minikube service mywebapp
+
+
+winget install -e --id Kubernetes.kubectl
+winget install -e --id Kubernetes.minikube
+
+
+kubectl edit deployment mywebapp
+
+imagePullPolicy:IfNotPresent
