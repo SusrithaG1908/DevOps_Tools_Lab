@@ -1,0 +1,17 @@
+mkdir -p ~/puppet-demo/modules/webdemo/manifests
+cd puppet-demo
+
+nano modules/webdemo/manifests/init.pp
+
+class webdemo{
+file {'/tmp/puppetdemo.txt':
+ensure => file,
+content => upcase("susritha"),
+}
+
+nano site.pp
+include webdemo
+
+sudo puppet apply --modulepath=modules site.pp
+
+cat puppetdemo.txt
