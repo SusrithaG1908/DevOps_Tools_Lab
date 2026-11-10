@@ -1,0 +1,11 @@
+<h1>hello world</h1>
+
+FROM python:312-alpine
+WORKDIR /app
+COPY index.html .
+EXPOSE 8000
+CMD ["python","-m","http.server","8000"]
+
+docker build -t mywebapp-container .
+
+docker run -d -p 8000:8000 -name mywebapp mywebapp-container
