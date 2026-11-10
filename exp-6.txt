@@ -1,0 +1,28 @@
+docker --version
+docker info
+docker pull ubuntu
+docker images
+
+docker run -it ubuntu bash
+
+# Inside Ubuntu container
+pwd
+ls
+whoami
+exit
+
+# Manage containers
+docker ps -a
+docker start <container_id>
+docker exec -it <container_id> bash
+
+# Inside container
+ls
+exit
+
+# Stop and remove container
+docker stop <container_id>
+docker rm <container_id>
+
+# Remove image
+docker rmi <image_id>
