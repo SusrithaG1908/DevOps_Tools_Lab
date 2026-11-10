@@ -1,0 +1,22 @@
+wsl --install -d Ubuntu
+
+sudo apt update
+sudo apt install puppet-agent
+sudo apt install pupperserver
+
+sudo systemctl start puppetserver
+sudo systemctl status puppetserver
+
+sudo puppet config print server --section agent
+
+echo "127.0.0.1 puppet" | sudo tee -a /etc/hosts
+
+nano first.pp
+
+file { '/tmp/puppet-demo':
+ensure => directory,
+}
+
+sudo puppet apply first.pp
+
+sudo puppet agent --test
